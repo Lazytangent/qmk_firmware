@@ -64,14 +64,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      | End  | PgDn |      |      |      |      |      |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |AltF4 |      |      |             |      |      |VolDn |VolUp |      |
+ * |      |      |AltF4 |Gui(D)|      |             |      |      |VolDn |VolUp |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_4x12(
     KC_GRV,  KC_1,    KC_2,     KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
     KC_DEL,  KC_HOME, KC_PGUP,  KC_MPRV, KC_MPLY, KC_MNXT, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
     _______, KC_END,  KC_PGDN,  _______, _______, _______, _______, _______, KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
-    _______, _______, A(KC_F4), _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, _______
+    _______, _______, A(KC_F4), G(KC_D), _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, _______
 ),
 
 /* Raise
