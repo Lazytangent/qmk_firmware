@@ -1,4 +1,4 @@
-enum custom_keycodes {
+enum greek_keycodes {
     ALPHA = SAFE_RANGE,
     BETA,
     GAMMA,
