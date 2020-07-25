@@ -66,7 +66,7 @@ __attribute__((weak)) bool has_usb(void) {
         usbstate = MASTER;
 #endif
     }
-
+    // return false;
     return (usbstate == MASTER);
 }
 
