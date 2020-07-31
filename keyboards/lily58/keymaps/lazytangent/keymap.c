@@ -16,14 +16,14 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
-#define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _ADJUST 3
-#define _LIFT 4
-#define _GREEK 5
+#define QWERTY 0
+#define LOWER 1
+#define RAISE 2
+#define ADJUST 3
+#define LIFT 4
+#define GREEK 5
 
-// enum custom_keycodes {
+// enum custom_keycodes {       Using enum creates an error in compiling where the keymaps array is too large
 //   QWERTY = SAFE_RANGE,
 //   LOWER,
 //   RAISE,
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 
- [_QWERTY] = LAYOUT( \
+ [QWERTY] = LAYOUT( \
   KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV, \
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS, \
   KC_LCTRL, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
-[_LOWER] = LAYOUT( \
+[LOWER] = LAYOUT( \
   KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD,\
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, \
   KC_CAPS, _______, _______, _______, _______, _______,                   _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, _______, \
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 
-[_RAISE] = LAYOUT( \
+[RAISE] = LAYOUT( \
   KC_TILD, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, KC_BSPC, \
   KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,                      KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24, \
   _______, _______, _______, KC_INS,  KC_HOME, KC_PGUP,                     _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, \
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
-[_ADJUST] = LAYOUT( \
+[ADJUST] = LAYOUT( \
 _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
 _______, _______, _______, _______, KC_VOLU, _______,                   _______, _______, _______, _______, _______, _______, \
 _______, _______, KC_MPRV, KC_MNXT, KC_MPLY, _______,                   _______, _______, _______, _______, _______, _______, \
@@ -136,7 +136,7 @@ _______, _______, _______, _______, KC_VOLD, _______, _______, _______, _______,
  *                   `----------------------------'           '------''--------------------'
  */
 
-[_LIFT] = LAYOUT( \
+[LIFT] = LAYOUT( \
   _______, KC_EXLM, KC_AT,   KC_HASH,  KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, \
   _______, KC_Q,    KC_W,    KC_E,     KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS, \
   _______, KC_A,    KC_S,    KC_D,     KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
@@ -157,7 +157,7 @@ _______, _______, _______, _______, KC_VOLD, _______, _______, _______, _______,
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
-[_GREEK] = LAYOUT( \
+[GREEK] = LAYOUT( \
 _______, _______, _______, _______, KC_DLR,  _______,                   _______, _______, _______, _______,  _______, _______, \
 _______, _______, _______, EPSILON, RHO,     TAU,                       UPSILON, THETA,   IOTA,    OMNICRON, PI,      _______, \
 _______, ALPHA,   SIGMA,   DELTA,   PHI,     GAMMA,                     ETA,     XI,      KAPPA,   LAMBDA,   _______, _______, \

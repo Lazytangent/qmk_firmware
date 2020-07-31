@@ -1,16 +1,20 @@
 #include QMK_KEYBOARD_H
 #include "keyDefinitions.h"
 
-#define _WIN 0
-#define _MAC 1
-#define _2 1
-#define _3 2
-#define _4 3
-#define _5 4
-#define _6 5
+#define _BASE 0
+#define _1 1
+#define _2 2
+#define _3 3
+#define _4 4
 
-#define ______ KC_TRNS
 
+/* enum layers {            With current layers, using enum for layers makes the keymap too large to compile for the dz60
+    _BASE = SAFE_RANGE,
+    _1,
+    _2,
+    _3,
+    _4
+}; */
 
 /*
  * LAYOUT_Lazy1                                                Row Keys
@@ -40,9 +44,10 @@
     { k30, k31,   k32,   k33, k34,   k35,   k36, k37,   k38,   k39,   k3a, k3b, k3c,   k3d,   k3e   }, \
     { k40, k41,   KC_NO, k43, KC_NO, KC_NO, k46, KC_NO, KC_NO, KC_NO, k4a, k4b, k4c,   k4d,   k4e   }  \
 }
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  /* WINDOWS
+  /* BASE
    * ,-----------------------------------------------------------------------------------------.
    * | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   Bkspc   |
    * |-----------------------------------------------------------------------------------------+
@@ -56,34 +61,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------------------------------------------------------'
    */
 
-    [_WIN] = LAYOUT_Lazy1(
-      KC_ESC,  KC_1,    KC_2,    KC_3,   KC_4,   KC_5,   KC_6,    KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,           KC_BSPC,
+    [_BASE] = LAYOUT_Lazy1(
+      KC_ESC,  KC_1,    KC_1,    KC_2,   KC_3,   KC_4,   KC_6,    KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,           KC_BSPC,
       KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,   KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
       KC_CAPS, KC_A,    KC_S,    KC_D,   KC_F,   KC_G,   KC_H,    KC_J,  KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
-      MO(3),   KC_LSFT, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,    KC_N,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_DEL,
-      KC_LCTL, KC_LALT, KC_LGUI,                         KC_SPC,                           MO(4),   MO(2),   KC_LEFT, KC_DOWN, KC_RIGHT
+      MO(_2),  KC_LSFT, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,    KC_N,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_DEL,
+      KC_LCTL, KC_LALT, KC_LGUI,                         KC_SPC,                           MO(_3),  MO(_1),  KC_LEFT, KC_DOWN, KC_RIGHT
     ),
-  /* MACOS
-   * ,-----------------------------------------------------------------------------------------.
-   * | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   Bkspc   |
-   * |-----------------------------------------------------------------------------------------+
-   * | Tab    |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |    \   |
-   * |-----------------------------------------------------------------------------------------+
-   * | Caps    |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  |    Enter    |
-   * |-----------------------------------------------------------------------------------------+
-   * |MO(3)|Shift|  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  | RSh |  U  | Del |
-   * |-----------------------------------------------------------------------------------------+
-   * | Ctrl |  Alt  |  Gui  |              Space               | MO(5)| MO(2)|  L  |  D  |  R  |
-   * `-----------------------------------------------------------------------------------------'
-   */
 
-    [_MAC] = LAYOUT_Lazy1(
-      KC_ESC,  KC_1,    KC_2,    KC_3,   KC_4,   KC_5,   KC_6,    KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,           KC_BSPC,
-      KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,   KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
-      KC_CAPS, KC_A,    KC_S,    KC_D,   KC_F,   KC_G,   KC_H,    KC_J,  KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
-      MO(3),   KC_LSFT, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,    KC_N,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_DEL,
-      KC_LCTL, KC_LALT, KC_LGUI,                         KC_SPC,                           MO(5),   MO(2),   KC_LEFT, KC_DOWN, KC_RIGHT
-    ),
   /* 2
    * ,-----------------------------------------------------------------------------------------.
    * | ` |  F1 |  F2 |  F3 |  F4 |  F5 |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |   RESET     |
@@ -98,12 +83,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------------------------------------------------------'
    */
 
-    [_2] = LAYOUT_Lazy1(
-      KC_GRV, KC_F1,  KC_F2,  KC_F3,  KC_F4,   KC_F5,   KC_F6,   KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,         ______,
-      ______, ______, ______, KC_INS, KC_PGUP, ______,  ______,  ______, ______, ______, ______, ______, ______, ______,
-      ______, ______, ______, KC_END, KC_HOME, KC_MPLY, ______,  ______, ______, ______, ______, ______, ______,
-      ______, ______, ______, KC_DEL, KC_PGDN, KC_MPRV, KC_MNXT, DF(1),  DF(0), ______, ______, ______, ______, ______, ______,
-      ______, ______, ______,                           ______,                          MO(6),  ______, ______, ______, ______
+    [_1] = LAYOUT_Lazy1(
+      KC_GRV,  KC_F1,   KC_F2,   KC_F3,  KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,           _______,
+      _______, _______, _______, KC_INS, KC_PGUP, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+      _______, _______, _______, KC_END, KC_HOME, KC_MPLY, _______, _______, _______, _______, _______, _______, _______,
+      _______, _______, _______, KC_DEL, KC_PGDN, KC_MPRV, KC_MNXT, _______, _______, _______, _______, _______, _______, _______, _______,
+      _______, _______, _______,                           _______,                            MO(_4),  _______, _______, _______, _______
     ),
 
   /* 3
@@ -120,12 +105,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------------------------------------------------------'
    */
 
-    [_3] = LAYOUT_Lazy1(
-        KC_GRV, KC_EXLM, KC_AT,  KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,          KC_BSPC,
-        ______, KC_Q,    KC_W,   KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
-        ______, KC_A,    KC_S,   KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
-        ______, ______,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_LT,   KC_GT,   KC_SLSH, ______,  ______,  ______,
-        ______, ______,  ______,                            ______,                             ______,  ______,  ______,  ______,  ______
+    [_2] = LAYOUT_Lazy1(
+        KC_GRV, KC_EXLM,  KC_AT,  KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,          KC_BSPC,
+        _______, KC_Q,    KC_W,   KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
+        _______, KC_A,    KC_S,   KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
+        _______, _______, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_LT,   KC_GT,   KC_SLSH, _______, _______, _______,
+        _______, _______, _______,                           _______,                            _______, _______, _______, _______, _______
     ),
 
   /* 4 Windows Shortcuts
@@ -142,39 +127,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------------------------------------------------------'
    */
 
-    [_4] = LAYOUT_Lazy1(
-        KC_TILD, KC_F13,   KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,           KC_BSPC,
-        ______,  ______,   C(KC_W), ______,  C(KC_T), ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,
-        ______,  ______,   ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,
-        ______,  ______,   C(KC_Z), C(KC_X), C(KC_C), C(KC_V), ______,  ______,  ______,  ______,  ______,  ______,  KC_RSFT, KC_UP,   KC_DEL,
-        ______,  A(KC_F4), G(KC_D),                            ______,                             ______,  MO(6),   KC_LEFT, KC_DOWN, KC_RGHT
+    [_3] = LAYOUT_Lazy1(
+        KC_TILD,  KC_F13,   KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,           KC_BSPC,
+        _______,  _______,  C(KC_W), _______, C(KC_T), _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______,  _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______,  _______,  C(KC_Z), C(KC_X), C(KC_C), C(KC_V), _______, _______, _______, _______, _______, _______, KC_RSFT, KC_UP,   KC_DEL,
+        _______,  A(KC_F4), G(KC_D),                            _______,                            _______, MO(_4),  KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
-
-  /* 5 MacOS Shortcuts
-   * ,-----------------------------------------------------------------------------------------.
-   * |  ~  | F13 | F14 | F15 | F16 | F17 | F18 | F19 | F20 | F21 | F22 | F23 | F24 |   Bspc    |
-   * |-----------------------------------------------------------------------------------------+
-   * |        |     |Cmd W|     |Cmd T|     |     |     |     |     |      |      |      |     |
-   * |-----------------------------------------------------------------------------------------+
-   * |         |     |     |     |     |     |     |     |     |     |     |     |             |
-   * |-----------------------------------------------------------------------------------------+
-   * |     |     |Cmd Z|Cmd X|Cmd C|Cmd V|     |     |     |     |     |     |RShft| Up  | Del |
-   * |-----------------------------------------------------------------------------------------+
-   * |      |Alt(F4)| Gui(D)|                                   |      |MO(6)|Left |Down |Right|
-   * `-----------------------------------------------------------------------------------------'
-   */
-
-    [_5] = LAYOUT_Lazy1(
-        KC_TILD, KC_F13,   KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,           KC_BSPC,
-        ______,  ______,   G(KC_W), ______,  G(KC_T), ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,
-        ______,  ______,   ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,
-        ______,  ______,   G(KC_Z), G(KC_X), G(KC_C), G(KC_V), ______,  ______,  ______,  ______,  ______,  ______,  KC_RSFT, KC_UP,   KC_DEL,
-        ______,  A(KC_F4), G(KC_D),                            ______,                             ______,  MO(6),   KC_LEFT, KC_DOWN, KC_RGHT
-    ),
-
-
-   /* _6 Greek shortcuts for LaTeX
+   /* _4 Greek shortcuts for LaTeX
     * ,-----------------------------------------------------------------------------------------.
     * |     |     |     |     |  $  |     |     |     |     |     |     |     |     |           |
     * |-----------------------------------------------------------------------------------------+
@@ -188,12 +149,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------------------------------------------------------------------------'
     */
 
-     [_6] = LAYOUT_Lazy1(
-         ______,  ______,  ______,  ______,  KC_DLR,  ______,  ______,  ______,  ______,  ______,   ______,  ______,  ______,           ______,
-         ______,  ______,  ______,  EPSILON, RHO,     TAU,     UPSILON, THETA,   IOTA,    OMNICRON, PI,      ______,  ______,   ______,
-         ______,  ALPHA,   SIGMA,   DELTA,   PHI,     GAMMA,   ETA,     XI,      KAPPA,   LAMBDA,   ______,  ______,  ______,
-         ______,  ______,  ZETA,    CHI,     PSI,     OMEGA,   BETA,    NU,      MU,      ______,   ______,  ______,  ______,   ______, ______,
-         ______,  ______,  ______,                             ______,                              ______,  ______,  ______,   ______, ______
+     [_4] = LAYOUT_Lazy1(
+         _______,  _______,  _______,  _______,  KC_DLR,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,           _______,
+         _______,  _______,  _______,  EPSILON, RHO,     TAU,     UPSILON, THETA,   IOTA,    OMNICRON, PI,      _______,  _______,   _______,
+         _______,  ALPHA,   SIGMA,   DELTA,   PHI,     GAMMA,   ETA,     XI,      KAPPA,   LAMBDA,   _______,  _______,  _______,
+         _______,  _______,  ZETA,    CHI,     PSI,     OMEGA,   BETA,    NU,      MU,      _______,   _______,  _______,  _______,   _______, _______,
+         _______,  _______,  _______,                             _______,                              _______,  _______,  _______,   _______, _______
      ),
 
 };

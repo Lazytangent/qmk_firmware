@@ -18,19 +18,11 @@
 #include "muse.h"
 
 enum preonic_layers {
-  _QWERTY,
-  _LOWER,
-  _RAISE,
-  _ADJUST,
-  _LIFT
-};
-
-enum preonic_keycodes {
-  QWERTY = SAFE_RANGE,
+  QWERTY,
   LOWER,
   RAISE,
-  LIFT,
-  BACKLIT
+  ADJUST,
+  LIFT
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -48,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Lift | Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
-[_QWERTY] = LAYOUT_preonic_grid( \
+[QWERTY] = LAYOUT_preonic_grid( \
   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
   KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
@@ -69,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |             |Adjust| Prev | VolD | VolU | Next |
  * `-----------------------------------------------------------------------------------'
  */
-[_LOWER] = LAYOUT_preonic_grid( \
+[LOWER] = LAYOUT_preonic_grid( \
   KC_GRV,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
   _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______, _______, _______,  \
   _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, \
@@ -90,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |Adjust|             |      |      | Bri- | Bri+ |      |
  * `-----------------------------------------------------------------------------------'
  */
-[_RAISE] = LAYOUT_preonic_grid( \
+[RAISE] = LAYOUT_preonic_grid( \
   KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, \
   _______, KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  _______, _______, _______, _______, _______,  \
   _______, KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,  KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
@@ -111,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |             |      | Prev | Vol- | Vol+ | Next |
  * `-----------------------------------------------------------------------------------'
  */
-[_ADJUST] = LAYOUT_preonic_grid( \
+[ADJUST] = LAYOUT_preonic_grid( \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  \
   _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,  \
   _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  _______, _______, _______, _______, \
@@ -132,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
-[_LIFT] = LAYOUT_preonic_grid( \
+[LIFT] = LAYOUT_preonic_grid( \
   KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, \
   _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
   _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
@@ -146,55 +138,55 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
         case QWERTY:
           if (record->event.pressed) {
-            set_single_persistent_default_layer(_QWERTY);
+            set_single_persistent_default_layer(QWERTY);
           }
           return false;
           break;
         case LOWER:
           if (record->event.pressed) {
-            layer_on(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_on(LOWER);
+            update_tri_layer(LOWER, RAISE, ADJUST);
           } else {
-            layer_off(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_off(LOWER);
+            update_tri_layer(LOWER, RAISE, ADJUST);
           }
           return false;
           break;
         case RAISE:
           if (record->event.pressed) {
-            layer_on(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_on(RAISE);
+            update_tri_layer(LOWER, RAISE, ADJUST);
           } else {
-            layer_off(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_off(RAISE);
+            update_tri_layer(LOWER, RAISE, ADJUST);
           }
           return false;
           break;
       case LIFT:
           if (record->event.pressed) {
-            layer_on(_LIFT);
+            layer_on(LIFT);
           } else {
-            layer_off(_LIFT);
+            layer_off(LIFT);
           }
           return false;
           break;
-        case BACKLIT:
-          if (record->event.pressed) {
-            register_code(KC_RSFT);
-            #ifdef BACKLIGHT_ENABLE
-              backlight_step();
-            #endif
-            #ifdef __AVR__
-            writePinLow(E6);
-            #endif
-          } else {
-            unregister_code(KC_RSFT);
-            #ifdef __AVR__
-            writePinHigh(E6);
-            #endif
-          }
-          return false;
-          break;
+        // case BACKLIT:
+        //   if (record->event.pressed) {
+        //     register_code(KC_RSFT);
+        //     #ifdef BACKLIGHT_ENABLE
+        //       backlight_step();
+        //     #endif
+        //     #ifdef __AVR__
+        //     writePinLow(E6);
+        //     #endif
+        //   } else {
+        //     unregister_code(KC_RSFT);
+        //     #ifdef __AVR__
+        //     writePinHigh(E6);
+        //     #endif
+        //   }
+        //   return false;
+        //   break;
       }
     return true;
 };
@@ -207,7 +199,7 @@ uint16_t muse_tempo = 50;
 
 void encoder_update_user(uint8_t index, bool clockwise) {
   if (muse_mode) {
-    if (IS_LAYER_ON(_RAISE)) {
+    if (IS_LAYER_ON(RAISE)) {
       if (clockwise) {
         muse_offset++;
       } else {
@@ -222,11 +214,9 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     }
   } else {
     if (clockwise) {
-      register_code(KC_PGDN);
-      unregister_code(KC_PGDN);
+      tap_code(KC_PGDN);
     } else {
-      register_code(KC_PGUP);
-      unregister_code(KC_PGUP);
+      tap_code(KC_PGUP);
     }
   }
 }
@@ -235,9 +225,9 @@ void dip_switch_update_user(uint8_t index, bool active) {
     switch (index) {
         case 0:
             if (active) {
-                layer_on(_ADJUST);
+                layer_on(ADJUST);
             } else {
-                layer_off(_ADJUST);
+                layer_off(ADJUST);
             }
             break;
         case 1:
