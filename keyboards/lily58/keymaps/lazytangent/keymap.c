@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  ~   |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |  `   |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   &  |   *  |   (  |   )  |  ~   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | F13  | F14  | F15  | F16  | F17  | F18  |                    | F19  | F20  | F21  | F22  | F23  | F24  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT( \
-  KC_TILD, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, KC_BSPC, \
+  KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD, \
   KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,                      KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24, \
   _______, _______, _______, KC_INS,  KC_HOME, KC_PGUP,                     _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, \
   _______, _______, _______, KC_DEL,  KC_END,  KC_PGDN,  _______, _______,  _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, _______, \
