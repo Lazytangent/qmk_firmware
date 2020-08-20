@@ -4,6 +4,8 @@
 #define _ADJUST 3
 #define _LIFT 4
 #define _GREEK 5
+#define LO_LSFT LM(0, MOD_LSFT)
+#define RA_LSFT LM(0, MOD_LSFT)
 
 enum custom_keycodes {
     ALPHA = SAFE_RANGE,
