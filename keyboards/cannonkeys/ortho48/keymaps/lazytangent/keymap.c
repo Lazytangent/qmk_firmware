@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _CHEESE 4
 
 /* enum layers {                Unable to use enum for layers on cannonkeys/ortho48 because of size restrictions
-  _BASE = SAFE_RANGE,
+  _BASE = SAFE_RANGE,1
   _LOWER,
   _RAISE,
   _NUM,
