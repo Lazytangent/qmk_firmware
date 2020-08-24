@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "keyDefinitions.h"
 
-#define _BASE 0
+#define _QWERTY 0
 #define _DVORAK 1
 #define _COLEMAK 2
 #define _1 3
