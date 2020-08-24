@@ -1,3 +1,7 @@
+#define QWERTY DF(0)
+#define DVORAK DF(1)
+#define COLEMAK DF(2)
+
 enum greek_keycodes {
     ALPHA = SAFE_RANGE,
     BETA,
