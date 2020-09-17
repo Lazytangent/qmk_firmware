@@ -15,7 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "muse.h"
+// #include "muse.h"
 
 enum preonic_layers {
   QWERTY,
@@ -40,12 +40,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Lift | Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
-[QWERTY] = LAYOUT_preonic_grid( \
+[QWERTY] = LAYOUT_preonic_1x2uC( \
   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
-  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+  KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-  LIFT,    KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  LIFT,    KC_LCTL, KC_LALT, KC_LGUI, LOWER,       KC_SPC,       RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
 /* Lower
@@ -61,12 +61,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |             |Adjust| Prev | VolD | VolU | Next |
  * `-----------------------------------------------------------------------------------'
  */
-[LOWER] = LAYOUT_preonic_grid( \
+[LOWER] = LAYOUT_preonic_1x2uC( \
   KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL, \
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,  \
-  _______, _______, _______, _______, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, _______, _______, \
+  _______, KC_A,    _______, _______, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, _______, _______, \
   _______, _______, _______, _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_LT,   KC_GT,   KC_QUES, _______, \
-  _______, _______, _______, _______, _______, KC_MPLY, KC_MPLY, _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT \
+  _______, _______, _______, _______, _______,      KC_MPLY,     _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT \
 ),
 
 /* Raise
@@ -82,12 +82,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |Adjust|             |      |      | Bri- | Bri+ |      |
  * `-----------------------------------------------------------------------------------'
  */
-[RAISE] = LAYOUT_preonic_grid( \
+[RAISE] = LAYOUT_preonic_1x2uC( \
   KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  \
   _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,_______, \
   _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_BRID, KC_BRIU, _______  \
+  _______, _______, _______, _______, _______,     _______,      _______, _______, KC_BRID, KC_BRIU, _______  \
 ),
 
 /* Adjust (Lower + Raise)
@@ -103,12 +103,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |             |      | Prev | Vol- | Vol+ | Next |
  * `-----------------------------------------------------------------------------------'
  */
-[ADJUST] = LAYOUT_preonic_grid( \
+[ADJUST] = LAYOUT_preonic_1x2uC( \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  \
   _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,  \
   _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  _______, _______, _______, _______, \
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, KC_MPLY, \
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT  \
+  _______, _______, _______, _______, _______,     _______,      _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT  \
 ),
 
 /* Lift
@@ -124,12 +124,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
-[LIFT] = LAYOUT_preonic_grid( \
+[LIFT] = LAYOUT_preonic_1x2uC( \
   KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, \
   _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,  \
   _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
+  _______, _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______  \
 )
 
 };
@@ -240,33 +240,33 @@ void dip_switch_update_user(uint8_t index, bool active) {
 }
 
 
-void matrix_scan_user(void) {
-#ifdef AUDIO_ENABLE
-    if (muse_mode) {
-        if (muse_counter == 0) {
-            uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
-            if (muse_note != last_muse_note) {
-                stop_note(compute_freq_for_midi_note(last_muse_note));
-                play_note(compute_freq_for_midi_note(muse_note), 0xF);
-                last_muse_note = muse_note;
-            }
-        }
-        muse_counter = (muse_counter + 1) % muse_tempo;
-    } else {
-        if (muse_counter) {
-            stop_all_notes();
-            muse_counter = 0;
-        }
-    }
-#endif
-}
+// void matrix_scan_user(void) {
+// #ifdef AUDIO_ENABLE
+//     if (muse_mode) {
+//         if (muse_counter == 0) {
+//             uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
+//             if (muse_note != last_muse_note) {
+//                 stop_note(compute_freq_for_midi_note(last_muse_note));
+//                 play_note(compute_freq_for_midi_note(muse_note), 0xF);
+//                 last_muse_note = muse_note;
+//             }
+//         }
+//         muse_counter = (muse_counter + 1) % muse_tempo;
+//     } else {
+//         if (muse_counter) {
+//             stop_all_notes();
+//             muse_counter = 0;
+//         }
+//     }
+// #endif
+// }
 
-bool music_mask_user(uint16_t keycode) {
-  switch (keycode) {
-    case RAISE:
-    case LOWER:
-      return false;
-    default:
-      return true;
-  }
-}
+// bool music_mask_user(uint16_t keycode) {
+//   switch (keycode) {
+//     case RAISE:
+//     case LOWER:
+//       return false;
+//     default:
+//       return true;
+//   }
+// }
