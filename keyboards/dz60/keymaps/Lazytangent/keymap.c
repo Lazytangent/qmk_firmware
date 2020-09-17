@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* 2
    * ,-----------------------------------------------------------------------------------------.
-   * |  `  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (   |  )  |  _  |  + |   Bspc    |
+   * |  ~  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (   |  )  |  _  |  + |   Bspc    |
    * |-----------------------------------------------------------------------------------------+
    * |        |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |  {  |  }  |    |   |
    * |-----------------------------------------------------------------------------------------+
@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
     [_2] = LAYOUT_Lazy1(
-        KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,          KC_BSPC,
+        KC_TILD,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,          KC_BSPC,
         _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR, KC_PIPE,
         _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,_______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______, _______,
