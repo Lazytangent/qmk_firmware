@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----------------------------------------------------------------------------------------+
    * |        |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  {   |  }   |  |   |
    * |-----------------------------------------------------------------------------------------+
-   * |         |     |     |     |  (  |  )  |  _  |  -  |  =  |  +  |     |     |             |
+   * |         |  `  |  ~  |     |  (  |  )  |  _  |  -  |  =  |  +  |     |     |             |
    * |-----------------------------------------------------------------------------------------+
    * |     |     |     |     |     |  {  |  }  |  [  |  ]  |  <  |  >  |  ?  | Ins | PgUp|     |
    * |-----------------------------------------------------------------------------------------+
@@ -155,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_1] = LAYOUT_Lazy1(
       KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,           _______,
       _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_LCBR, KC_RCBR, KC_PIPE,
-      _______, MO(_3),  _______, _______, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, KC_COLN, KC_DQUO, _______,
+      _______, KC_GRV,  KC_TILD, _______, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, KC_COLN, KC_DQUO, _______,
       _______, _______, _______, _______, _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_LT,   KC_GT,   KC_QUES, KC_INS,  KC_PGUP, _______,
       _______, _______, _______,          _______,          _______,          MO(_3),           _______, _______, KC_HOME, KC_PGDN, KC_END
     ),
@@ -166,18 +166,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----------------------------------------------------------------------------------------+
    * |        |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |  {  |  }  |    |   |
    * |-----------------------------------------------------------------------------------------+
-   * |         |     |     |     |     |     |     | Left| Down| Up  |Right|     |             |
+   * |         |  `  |  ~  |     |     |     |     | Left| Down| Up  |Right|     |             |
    * |-----------------------------------------------------------------------------------------+
    * |     |     |     |     |     |     |     |     | Home| PgDn| PgUp| End |     |     |     |
    * |-----------------------------------------------------------------------------------------+
-   * |      |       |       | MO(3) |  Play  |                  |      |     |     |     |     |
+   * |      |       |       | MO(3) |        |                  |      |     |     |     |     |
    * `-----------------------------------------------------------------------------------------'
    */
 
     [_2] = LAYOUT_Lazy1(
-        KC_TILD,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,          KC_BSPC,
+        KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,          KC_BSPC,
         _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR, KC_PIPE,
-        _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,_______, _______,
+        _______, KC_GRV,  KC_TILD, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,_______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______, _______,
         _______, _______, _______,          MO(_3),           _______,          _______,          _______, _______, _______, _______, _______
     ),
