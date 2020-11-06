@@ -1,4 +1,4 @@
-/* Copyright 2019 HnahKB
+/* Copyright 2019 Brandon Schlack
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,4 +16,5 @@
 
 #pragma once
 
-// place overrides here
+#undef RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_EFFECT_BREATHING // Only have Breathing Animation
