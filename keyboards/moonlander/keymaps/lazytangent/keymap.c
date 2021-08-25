@@ -25,6 +25,11 @@ enum custom_keycodes {
     VRSN = ML_SAFE_RANGE,
     KC_MC, // Misson Control
     KC_LP, // Launchpad
+    KC_ULT, // Super + Opt + Ctrl
+    LEFT, // Ctrl + Opt + Left
+    DOWN, // Ctrl + Opt + Down
+    UP, // Ctrl + Opt + Up
+    RIGHT, // Ctrl + Opt + Right
 };
 
 // clang-format off
@@ -34,16 +39,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_BSLS,           KC_DEL,  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_LBRC,           KC_RBRC, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-        KC_LALT, KC_LGUI, KC_MEH,LCA(KC_LGUI),_______,        G(KC_SPC),         _______,          KC_MC,   KC_LP,   KC_RCTL, KC_RGUI, KC_RALT,
-                                            KC_LGUI, MO(1),   KC_SPC,            KC_ENT,  MO(2),   KC_BSPC
+        KC_LALT, KC_ULT,  KC_MEH,  KC_LGUI, MO(1),           G(KC_SPC),          _______,          MO(2),   KC_BSPC,A(KC_LCTL),KC_RGUI,KC_RALT,
+                                            KC_SPC,  MO(1),   KC_LP,             KC_MC,   MO(2),   KC_ENT
     ),
 
     [1] = LAYOUT_moonlander(
         _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_ESC,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,
-        _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_PIPE,           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,
+        _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_PIPE,           _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
         _______, KC_GRV,  KC_TILD, _______, KC_LPRN, KC_RPRN, KC_LCBR,           KC_RCBR, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, KC_COLN, KC_DQUO,
         _______, _______, _______, _______, KC_LCBR, KC_RCBR,                             KC_LBRC, KC_RBRC, KC_LT,   KC_GT,   KC_QUES, _______,
-        EEP_RST, _______, _______, _______, _______,          _______,           _______,          _______, KC_DOT,  KC_0,    KC_EQL,  _______,
+        _______, _______, _______, _______, _______,          _______,           _______,          _______, KC_DOT,  KC_0,    KC_EQL,  _______,
                                             _______, _______, _______,           _______, MO(3),   _______
     ),
 
@@ -51,17 +56,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,             KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RESET,
         _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _______,           KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,
         _______, KC_GRV,  KC_TILD, _______, _______, _______, _______,           _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-        _______, _______, _______, _______, _______, _______,                             _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,                             LEFT,    DOWN,    UP,      RIGHT,   _______, _______,
         _______, _______, _______, _______, _______,          _______,           _______,          _______, _______, _______, _______, _______,
                                             _______, MO(3),   _______,           _______, _______, _______
     ),
 
     [3] = LAYOUT_moonlander(
-        LED_LEVEL,KC_F13, KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,            KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_23,   KC_24,   RESET,
+        LED_LEVEL,KC_F13, KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,            KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,  RESET,
         VRSN,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,             KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,
-        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD, _______, _______,           _______, _______, _______, _______, _______, _______, _______,
-        _______, RGB_HUD, RGB_SAD, RGB_VAD,RGB_RMOD, _______,                             _______, _______, _______  _______  _______, _______,
-        EEP_RST, _______, _______, _______, _______,          _______,           _______,          _______, _______  _______  _______  _______,
+        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD, RGB_SPI, _______,           _______, _______, _______, _______, _______, _______, _______,
+        _______, RGB_HUD, RGB_SAD, RGB_VAD,RGB_RMOD, RGB_SPD,                             _______, _______, _______, _______, _______, _______,
+        EEP_RST, _______, _______, _______, _______,          _______,           MO(4),            _______, _______, _______, _______, _______,
                                             _______, _______, _______,           _______, _______, _______
     ),
 
@@ -79,13 +84,52 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         switch (keycode) {
             case VRSN:
-                SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
                 return false;
             case KC_MC:
                 host_consumer_send(0x29F);
                 return false;
             case KC_LP:
                 host_consumer_send(0x2A0);
+                return false;
+            case KC_ULT:
+                register_code16(LCA(KC_LGUI));
+                return false;
+            case LEFT:
+                register_code16(LCA(KC_LEFT));
+                return false;
+            case DOWN:
+                register_code16(LCA(KC_DOWN));
+                return false;
+            case UP:
+                register_code16(LCA(KC_UP));
+                return false;
+            case RIGHT:
+                register_code16(LCA(KC_RIGHT));
+                return false;
+        }
+    } else {
+        switch (keycode) {
+            case KC_MC:
+                host_consumer_send(0);
+                return false;
+            case KC_LP:
+                host_consumer_send(0);
+                return false;
+            case KC_ULT:
+                unregister_code16(LCA(KC_LGUI));
+                return false;
+            case LEFT:
+                unregister_code16(LCA(KC_LEFT));
+                return false;
+            case DOWN:
+                unregister_code16(LCA(KC_DOWN));
+                return false;
+            case UP:
+                unregister_code16(LCA(KC_UP));
+                return false;
+            case RIGHT:
+                unregister_code16(LCA(KC_RIGHT));
                 return false;
         }
     }
