@@ -10,15 +10,6 @@
 #define _3 6
 #define _4 7
 
-
-// enum layers {
-//     BASE = SAFE_RANGE,
-//     1,
-//     2,
-//     3,
-//     4
-// };
-
 /*
  * LAYOUT_Lazy1                                                Row Keys
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
@@ -155,9 +146,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_1] = LAYOUT_Lazy1(
       KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,           _______,
       _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_LCBR, KC_RCBR, KC_PIPE,
-      _______, KC_GRV,  KC_TILD, _______, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, KC_COLN, KC_DQUO, _______,
-      _______, _______, _______, _______, _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_LT,   KC_GT,   KC_QUES, KC_INS,  KC_PGUP, _______,
-      _______, _______, _______,          _______,          _______,          MO(_3),          _______, _______, KC_HOME, KC_PGDN, KC_END
+      _______, KC_GRV,  KC_TILD, KC_BSLS, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, KC_COLN, KC_DQUO, _______,
+      _______, _______, _______, KC_PIPE, _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_LT,   KC_GT,   KC_QUES, KC_INS,  KC_PGUP, _______,
+      _______, _______, _______,          _______,          _______,          MO(_3),           _______, _______, KC_HOME, KC_PGDN, KC_END
     ),
 
   /* 2
@@ -178,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,          KC_BSPC,
         _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR, KC_PIPE,
         _______, KC_GRV,  KC_TILD, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______, _______,
+        _______, LEFT,    DOWN,    UP,      RIGHT,   MAX,     _______, _______, LEFT,    DOWN,    UP,      RIGHT,   _______, _______, _______,
         _______, _______, _______,          MO(_3),           _______,          _______,          _______, _______, _______, _______, _______
     ),
 
@@ -198,8 +189,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_3] = LAYOUT_Lazy1(
         KC_TILD, KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,   KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,  KC_F11,  KC_F12,                     KC_BSPC,
-        _______, SGUI(KC_1),SGUI(KC_2),SGUI(KC_3),SGUI(KC_4),_______, _______, LCA(KC_U),LCA(KC_I),_______, _______, _______, _______,      _______,
-        _______, _______,   _______,   LCA(KC_D), LCA(KC_F), LCA(KC_G),_______, LCA(KC_J),LCA(KC_K),_______, _______, _______, _______,
+        _______, _______,   _______,   _______,   _______,   _______, _______, _______,  _______,  _______, _______, _______, _______,      _______,
+        _______, _______,   _______,   _______,   _______,   _______, _______, _______,  _______,  _______, _______, _______, _______,
         _______, _______,   _______,   _______,   _______,   _______, _______, _______,  _______,  _______, _______, _______, KC_RSFT,      LCA(KC_UP),   KC_DEL,
         _______, A(KC_F4),  G(KC_D),              _______,            _______,           _______,           _______, MO(_4),  LCA(KC_LEFT), LCA(KC_DOWN), LCA(KC_RGHT)
     ),
@@ -220,9 +211,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_4] = LAYOUT_Lazy1(
         _______, KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,   KC_F22,  KC_F23,  KC_F24,           _______,
-        _______, KC_DLR,  _______, EPSILON, RHO,     TAU,     UPSILON, THETA,   IOTA,    OMNICRON, PI,      _______, _______, _______,
-        _______, ALPHA,   SIGMA,   DELTA,   PHI,     GAMMA,   ETA,     XI,      KAPPA,   LAMBDA,   _______, _______, _______,
-        _______, _______, ZETA,    CHI,     PSI,     OMEGA,   BETA,    NU,      MU,      _______,  _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______,
         _______, _______, _______,          _______,          _______,          _______,           _______, _______, _______, _______, _______
     ),
 

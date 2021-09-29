@@ -1,6 +1,4 @@
-#define QWERTY DF(0)
-#define DVORAK DF(1)
-#define COLEMAK DF(2)
+#include QMK_KEYBOARD_H
 
 enum greek_keycodes {
     ALPHA = SAFE_RANGE,
@@ -26,131 +24,234 @@ enum greek_keycodes {
     PHI,
     CHI,
     PSI,
-    OMEGA
+    OMEGA,
+
+    KC_MC,
+    KC_LP,
+    KC_ULT,
+
+    LEFT,
+    DOWN,
+    UP,
+    RIGHT,
+
+    U_LEFT,
+    U_DOWN,
+    U_UP,
+    U_RIGHT,
+
+    QUAD_U,
+    QUAD_I,
+    QUAD_J,
+    QUAD_K,
+
+    MAX
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case ALPHA:
-            if (record->event.pressed) {
+    if (record->event.pressed) {
+        switch (keycode) {
+            case KC_MC:
+                host_consumer_send(0x29F);
+                return false;
+            case KC_LP:
+                host_consumer_send(0x2A0);
+                return false;
+            case KC_ULT:
+                register_code(KC_LCTL);
+                register_code(KC_LALT);
+                register_code(KC_LGUI);
+                return false;
+            case LEFT:
+                register_code16(LCA(KC_LEFT));
+                return false;
+            case DOWN:
+                register_code16(LCA(KC_DOWN));
+                return false;
+            case UP:
+                register_code16(LCA(KC_UP));
+                return false;
+            case RIGHT:
+                register_code16(LCA(KC_RIGHT));
+                return false;
+            case U_LEFT:
+                register_code16(LCAG(KC_LEFT));
+                return false;
+            case U_DOWN:
+                register_code16(LCAG(KC_DOWN));
+                return false;
+            case U_UP:
+                register_code16(LCAG(KC_UP));
+                return false;
+            case U_RIGHT:
+                register_code16(LCAG(KC_RIGHT));
+                return false;
+            case QUAD_U:
+                register_code16(LCA(KC_U));
+                return false;
+            case QUAD_I:
+                register_code16(LCA(KC_I));
+                return false;
+            case QUAD_J:
+                register_code16(LCA(KC_J));
+                return false;
+            case QUAD_K:
+                register_code16(LCA(KC_K));
+                return false;
+            case MAX:
+                register_code16(LCA(KC_ENT));
+                return false;
+            case ALPHA:
                 SEND_STRING("\\alpha");
-            }
-            break;
-        case BETA:
-            if (record->event.pressed) {
+                return false;
+            case BETA:
                 SEND_STRING("\\beta");
-            }
-            break;
-        case GAMMA:
-            if (record->event.pressed) {
+                return false;
+            case GAMMA:
                 SEND_STRING("\\gamma");
-            }
-            break;
-        case DELTA:
-            if (record->event.pressed) {
+                return false;
+            case DELTA:
                 SEND_STRING("\\delta");
-            }
-            break;
-        case EPSILON:
-            if (record->event.pressed) {
+                return false;
+            case EPSILON:
                 SEND_STRING("\\epsilon");
-            }
-            break;
-        case ZETA:
-            if (record->event.pressed) {
+                return false;
+            case ZETA:
                 SEND_STRING("\\zeta");
-            }
-            break;
-        case ETA:
-            if (record->event.pressed) {
+                return false;
+            case ETA:
                 SEND_STRING("\\eta");
-            }
-            break;
-        case THETA:
-            if (record->event.pressed) {
+                return false;
+            case THETA:
                 SEND_STRING("\\theta");
-            }
-            break;
-        case IOTA:
-            if (record->event.pressed) {
+                return false;
+            case IOTA:
                 SEND_STRING("\\iota");
-            }
-            break;
-        case KAPPA:
-            if (record->event.pressed) {
+                return false;
+            case KAPPA:
                 SEND_STRING("\\kappa");
-            }
-            break;
-        case LAMBDA:
-            if (record->event.pressed) {
+                return false;
+            case LAMBDA:
                 SEND_STRING("\\lambda");
-            }
-            break;
-        case MU:
-            if (record->event.pressed) {
+                return false;
+            case MU:
                 SEND_STRING("\\mu");
-            }
-            break;
-        case NU:
-            if (record->event.pressed) {
+                return false;
+            case NU:
                 SEND_STRING("\\nu");
-            }
-            break;
-        case XI:
-            if (record->event.pressed) {
+                return false;
+            case XI:
                 SEND_STRING("\\xi");
-            }
-            break;
-        case OMNICRON:
-            if (record->event.pressed) {
+                return false;
+            case OMNICRON:
                 SEND_STRING("\\omnicron");
-            }
-            break;
-        case PI:
-            if (record->event.pressed) {
+                return false;
+            case PI:
                 SEND_STRING("\\pi");
-            }
-            break;
-        case RHO:
-            if (record->event.pressed) {
+                return false;
+            case RHO:
                 SEND_STRING("\\rho");
-            }
-            break;
-        case SIGMA:
-            if (record->event.pressed) {
+                return false;
+            case SIGMA:
                 SEND_STRING("\\sigma");
-            }
-            break;
-        case TAU:
-            if (record->event.pressed) {
+                return false;
+            case TAU:
                 SEND_STRING("\\tau");
-            }
-            break;
-        case UPSILON:
-            if (record->event.pressed) {
+                return false;
+            case UPSILON:
                 SEND_STRING("\\upsilon");
-            }
-            break;
-        case PHI:
-            if (record->event.pressed) {
+                return false;
+            case PHI:
                 SEND_STRING("\\phi");
-            }
-            break;
-        case CHI:
-            if (record->event.pressed) {
+                return false;
+            case CHI:
                 SEND_STRING("\\chi");
-            }
-            break;
-        case PSI:
-            if (record->event.pressed) {
+                return false;
+            case PSI:
                 SEND_STRING("\\psi");
-            }
-            break;
-        case OMEGA:
-            if (record->event.pressed) {
+                return false;
+            case OMEGA:
                 SEND_STRING("\\omega");
-            }
-            break;
+                return false;
+        }
+    } else {
+        switch (keycode) {
+            case KC_MC:
+                host_consumer_send(0);
+                return false;
+            case KC_LP:
+                host_consumer_send(0);
+                return false;
+            case KC_ULT:
+                unregister_code(KC_LGUI);
+                unregister_code(KC_LALT);
+                unregister_code(KC_LCTL);
+                return false;
+            case LEFT:
+                unregister_code16(LCA(KC_LEFT));
+                return false;
+            case DOWN:
+                unregister_code16(LCA(KC_DOWN));
+                return false;
+            case UP:
+                unregister_code16(LCA(KC_UP));
+                return false;
+            case RIGHT:
+                unregister_code16(LCA(KC_RIGHT));
+                return false;
+            case U_LEFT:
+                unregister_code16(LCAG(KC_LEFT));
+                return false;
+            case U_DOWN:
+                unregister_code16(LCAG(KC_DOWN));
+                return false;
+            case U_UP:
+                unregister_code16(LCAG(KC_UP));
+                return false;
+            case U_RIGHT:
+                unregister_code16(LCAG(KC_RIGHT));
+                return false;
+            case QUAD_U:
+                unregister_code16(LCA(KC_U));
+                return false;
+            case QUAD_I:
+                unregister_code16(LCA(KC_I));
+                return false;
+            case QUAD_J:
+                unregister_code16(LCA(KC_J));
+                return false;
+            case QUAD_K:
+                unregister_code16(LCA(KC_K));
+                return false;
+            case MAX:
+                unregister_code16(LCA(KC_ENT));
+                return false;
+            case ALPHA:
+            case BETA:
+            case GAMMA:
+            case DELTA:
+            case EPSILON:
+            case ZETA:
+            case ETA:
+            case THETA:
+            case IOTA:
+            case KAPPA:
+            case LAMBDA:
+            case MU:
+            case NU:
+            case XI:
+            case OMNICRON:
+            case PI:
+            case RHO:
+            case SIGMA:
+            case TAU:
+            case UPSILON:
+            case PHI:
+            case CHI:
+            case PSI:
+            case OMEGA:
+                return false;
+        }
     }
     return true;
 
