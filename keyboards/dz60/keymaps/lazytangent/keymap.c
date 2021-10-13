@@ -2,13 +2,10 @@
 #include "keyDefinitions.h"
 
 #define _QWERTY 0
-#define _GAME 1
-#define _DVORAK 2
-#define _COLEMAK 3
-#define _1 4
-#define _2 5
-#define _3 6
-#define _4 7
+#define _1 1
+#define _2 2
+#define _3 3
+#define _4 4
 
 /*
  * LAYOUT_Lazy1                                                Row Keys
@@ -60,74 +57,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,    KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
       KC_LCTL,   KC_A,    KC_S,    KC_D,   KC_F,   KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
       KC_ESC,    KC_LSFT, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,   KC_N,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_DEL,
-      KC_LALT,   KC_LALT, KC_LGUI,         MO(_1),         KC_SPC,        MO(_2),           KC_RALT, MO(_4),  KC_LEFT, KC_DOWN, KC_RIGHT
+      KC_LCTL,   KC_LALT, KC_LGUI,         MO(_1),         KC_SPC,        MO(_2),           MO(_3),  MO(_4),  KC_LEFT, KC_DOWN, KC_RIGHT
     ),
-
-  /* GAME
-   * ,-----------------------------------------------------------------------------------------.
-   * | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   Bkspc   |
-   * |-----------------------------------------------------------------------------------------+
-   * | Tab    |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |    \   |
-   * |-----------------------------------------------------------------------------------------+
-   * | CapsLoc |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  |    Enter    |
-   * |-----------------------------------------------------------------------------------------+
-   * | Ctrl|Shift|  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  | RSh |  U  | Del |
-   * |-----------------------------------------------------------------------------------------+
-   * | Ctrl| Alt | Gui |   MO(1)   | Space |      MO(2)      | MO(3) | MO(4) |  L  |  D  |  R  |
-   * `-----------------------------------------------------------------------------------------'
-   */
-
-    [_GAME] = LAYOUT_Lazy1(
-      KC_ESC,  KC_1,    KC_2,    KC_3,   KC_4,   KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,           KC_BSPC,
-      KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
-      KC_CAPS, KC_A,    KC_S,    KC_D,   KC_F,   KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
-      KC_LCTL, KC_LSFT, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,   KC_N,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_DEL,
-      KC_LCTL, KC_LALT, KC_LGUI,         MO(_1),         KC_SPC,        MO(_2),           MO(_3),  MO(_4),  KC_LEFT, KC_DOWN, KC_RIGHT
-    ),
-
-  /* DVORAK
-  * ,-----------------------------------------------------------------------------------------.
-  * | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  [  |  ]  |   Bkspc   |
-  * |-----------------------------------------------------------------------------------------+
-  * | Tab    |  '  |  ,  |  .  |  P  |  Y  |  F  |  G  |  C  |  R  |  L  |  /  |  =  |    \   |
-  * |-----------------------------------------------------------------------------------------+
-  * | Control |  A  |  O  |  E  |  U  |  I  |  D  |  H  |  T  |  N  |  S  |  -  |    Enter    |
-  * |-----------------------------------------------------------------------------------------+
-  * |Shift|Shift|  ;  |  Q  |  J  |  K  |  X  |  B  |  M  |  W  |  V  |  Z  | RSh |  U  | Del |
-  * |-----------------------------------------------------------------------------------------+
-  * | Caps| Alt | Gui |   MO(1)   | Space |      MO(2)      | MO(3) | MO(4) |  L  |  D  |  R  |
-  * `-----------------------------------------------------------------------------------------'
-  */
-
-  [_DVORAK] = LAYOUT_Lazy1(
-    KC_ESC,  KC_1,    KC_2,    KC_3,   KC_4,   KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,    KC_LBRC, KC_RBRC,          KC_BSPC,
-    KC_TAB,  KC_QUOT, KC_COMM, KC_DOT, KC_P,   KC_Y,   KC_F,   KC_G,  KC_C,    KC_R,    KC_L,    KC_SLSH, KC_EQL,  KC_BSLS,
-    KC_LCTL, KC_A,    KC_O,    KC_E,   KC_U,   KC_I,   KC_D,   KC_H,  KC_T,    KC_N,    KC_S,    KC_MINS, KC_ENT,
-    KC_LSFT, KC_LSFT, KC_SCLN, KC_Q,   KC_J,   KC_K,   KC_X,   KC_B,  KC_M,    KC_W,    KC_V,    KC_Z,    KC_RSFT, KC_UP,   KC_DEL,
-    KC_CAPS, KC_LALT, KC_LGUI,         MO(_1),         KC_SPC,        KC_BSPC,          MO(_3),  MO(_4),  KC_LEFT, KC_DOWN, KC_RIGHT
-  ),
-
-  /* COLEMAK
-  * ,-----------------------------------------------------------------------------------------.
-  * | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   Bkspc   |
-  * |-----------------------------------------------------------------------------------------+
-  * | Tab    |  Q  |  W  |  F  |  P  |  G  |  J  |  L  |  U  |  Y  |  ;  |  [  |  ]  |    \   |
-  * |-----------------------------------------------------------------------------------------+
-  * | Control |  A  |  R  |  S  |  T  |  D  |  H  |  N  |  E  |  I  |  O  |  '  |    Enter    |
-  * |-----------------------------------------------------------------------------------------+
-  * |MO(2)|Shift|  Z  |  X  |  C  |  V  |  B  |  K  |  M  |  ,  |  .  |  /  | RSh |  U  | Del |
-  * |-----------------------------------------------------------------------------------------+
-  * | Caps| Alt | Gui |   MO(1)   | Space |    Backspace    | MO(3) | MO(4) |  L  |  D  |  R  |
-  * `-----------------------------------------------------------------------------------------'
-  */
-
-  [_COLEMAK] = LAYOUT_Lazy1(
-    KC_ESC,  KC_1,    KC_2,    KC_3,   KC_4,   KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,           KC_BSPC,
-    KC_TAB,  KC_Q,    KC_W,    KC_F,   KC_P,   KC_G,   KC_J,   KC_L,  KC_U,    KC_Y,    KC_SCLN, KC_LBRC, KC_RBRC, KC_BSLS,
-    KC_LCTL, KC_A,    KC_R,    KC_S,   KC_T,   KC_D,   KC_H,   KC_N,  KC_E,    KC_I,    KC_O,    KC_QUOT, KC_ENT,
-    MO(_2),  KC_LSFT, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,   KC_K,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_DEL,
-    KC_CAPS, KC_LALT, KC_LGUI,         MO(_1),         KC_SPC,        KC_BSPC,          MO(_3),  MO(_4),  KC_LEFT, KC_DOWN, KC_RIGHT
-  ),
 
   /* 1
    * ,-----------------------------------------------------------------------------------------.
@@ -144,10 +75,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
     [_1] = LAYOUT_Lazy1(
-      KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,           _______,
+      KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,          _______,
       _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_LCBR, KC_RCBR, KC_PIPE,
-      _______, KC_GRV,  KC_TILD, KC_BSLS, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, KC_COLN, KC_DQUO, _______,
-      _______, _______, _______, KC_PIPE, _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_LT,   KC_GT,   KC_QUES, KC_INS,  KC_PGUP, _______,
+      MO(_3),  KC_GRV,  KC_TILD, KC_BSLS, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, KC_COLN, KC_DQUO, _______,
+      _______, MO(_4),  _______, _______, KC_PIPE, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_LT,   KC_GT,   KC_QUES, KC_INS,  KC_PGUP, _______,
       _______, _______, _______,          _______,          _______,          MO(_3),           _______, _______, KC_HOME, KC_PGDN, KC_END
     ),
 
@@ -169,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,          KC_BSPC,
         _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR, KC_PIPE,
         _______, KC_GRV,  KC_TILD, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, _______,
-        _______, LEFT,    DOWN,    UP,      RIGHT,   MAX,     _______, _______, LEFT,    DOWN,    UP,      RIGHT,   _______, _______, _______,
+        _______, _______, LEFT,    DOWN,    UP,      RIGHT,   MAX,     _______, LEFT,    DOWN,    UP,      RIGHT,   _______, _______, _______,
         _______, _______, _______,          MO(_3),           _______,          _______,          _______, _______, _______, _______, _______
     ),
 
@@ -188,11 +119,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
     [_3] = LAYOUT_Lazy1(
-        KC_TILD, KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,   KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,  KC_F11,  KC_F12,                     KC_BSPC,
-        _______, _______,   _______,   _______,   _______,   _______, _______, _______,  _______,  _______, _______, _______, _______,      _______,
-        _______, _______,   _______,   _______,   _______,   _______, _______, _______,  _______,  _______, _______, _______, _______,
-        _______, _______,   _______,   _______,   _______,   _______, _______, _______,  _______,  _______, _______, _______, KC_RSFT,      LCA(KC_UP),   KC_DEL,
-        _______, A(KC_F4),  G(KC_D),              _______,            _______,           _______,           _______, MO(_4),  LCA(KC_LEFT), LCA(KC_DOWN), LCA(KC_RGHT)
+        KC_TILD, KC_F1,    KC_F2,   KC_F3,     KC_F4,     KC_F5,     KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,  KC_F11,  KC_F12,                     KC_BSPC,
+        _______, QUAD_U,   QUAD_I,  MEH(KC_E), MEH(KC_R), MEH(KC_T), _______, QUAD_U,   QUAD_I,   _______, _______, _______, _______,      _______,
+        _______, QUAD_J,   QUAD_K,  MEH(KC_D), MEH(KC_F), MEH(KC_G), _______, QUAD_J,   QUAD_K,   _______, _______, _______, _______,
+        _______, _______,  _______, _______,   _______,   _______,   _______, _______,  _______,  _______, _______, _______, KC_RSFT,      LCA(KC_UP),   KC_DEL,
+        _______, A(KC_F4), G(KC_D),            _______,              _______,           _______,           _______, MO(_4),  LCA(KC_LEFT), LCA(KC_DOWN), LCA(KC_RGHT)
     ),
 
   /* 4 Greek shortcuts for LaTeX
@@ -210,11 +141,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
     [_4] = LAYOUT_Lazy1(
-        _______, KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,   KC_F22,  KC_F23,  KC_F24,           _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______,
-        _______, _______, _______,          _______,          _______,          _______,           _______, _______, _______, _______, _______
+        _______, KC_F13,  KC_F14,  KC_F15,    KC_F16,    KC_F17,    KC_F18,  KC_F19,  KC_F20,  KC_F21,   KC_F22,  KC_F23,  KC_F24,           _______,
+        _______, _______, _______, LCA(KC_E), _______,   LCA(KC_T), _______, _______, _______, _______,  _______, _______, _______, _______,
+        _______, _______, _______, LCA(KC_D), LCA(KC_F), LCA(KC_G), _______, _______, _______, _______,  _______, _______, _______,
+        _______, _______, _______, _______,   _______,   _______,   _______, _______, _______, _______,  _______, _______, _______, _______, _______,
+        _______, _______, _______,            _______,              _______,          _______,           _______, _______, _______, _______, _______
     ),
 
 };
