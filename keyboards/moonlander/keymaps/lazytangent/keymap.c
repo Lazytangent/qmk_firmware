@@ -32,16 +32,6 @@ enum custom_keycodes {
     UP, // Ctrl + Opt + Up
     RIGHT, // Ctrl + Opt + Right
 
-    U_LEFT, // Super + Opt + Ctrl + Left
-    U_DOWN, // Super + Opt + Ctrl + Down
-    U_UP, // Super + Opt + Ctrl + Up
-    U_RIGHT, // Super + Opt + Ctrl + Right
-
-    QUAD_U,
-    QUAD_I,
-    QUAD_J,
-    QUAD_K,
-
     MAX,
 };
 
@@ -77,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [3] = LAYOUT_moonlander(
         LED_LEVEL,KC_F13, KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,            KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,  RESET,
         VRSN,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,             KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,
-        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD, RGB_SPI, _______,           _______, U_LEFT,  U_DOWN,  U_UP,    U_RIGHT, _______, _______,
+        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD, RGB_SPI, _______,           _______, _______, _______, _______, _______, _______, _______,
         _______, RGB_HUD, RGB_SAD, RGB_VAD,RGB_RMOD, RGB_SPD,                             _______, _______, _______, _______, _______, _______,
         EEP_RST, _______, _______, _______, _______,          _______,           MO(4),            _______, _______, _______, _______, _______,
                                             _______, _______, _______,           _______, _______, _______
@@ -122,30 +112,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case RIGHT:
                 register_code16(LCA(KC_RIGHT));
                 return false;
-            case U_LEFT:
-                register_code16(LCAG(KC_LEFT));
-                return false;
-            case U_DOWN:
-                register_code16(LCAG(KC_DOWN));
-                return false;
-            case U_UP:
-                register_code16(LCAG(KC_UP));
-                return false;
-            case U_RIGHT:
-                register_code16(LCAG(KC_RIGHT));
-                return false;
-            case QUAD_U:
-                register_code16(LCA(KC_U));
-                return false;
-            case QUAD_I:
-                register_code16(LCA(KC_I));
-                return false;
-            case QUAD_J:
-                register_code16(LCA(KC_J));
-                return false;
-            case QUAD_K:
-                register_code16(LCA(KC_K));
-                return false;
             case MAX:
                 register_code16(LCA(KC_ENT));
                 return false;
@@ -174,30 +140,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case RIGHT:
                 unregister_code16(LCA(KC_RIGHT));
-                return false;
-            case U_LEFT:
-                unregister_code16(LCAG(KC_LEFT));
-                return false;
-            case U_DOWN:
-                unregister_code16(LCAG(KC_DOWN));
-                return false;
-            case U_UP:
-                unregister_code16(LCAG(KC_UP));
-                return false;
-            case U_RIGHT:
-                unregister_code16(LCAG(KC_RIGHT));
-                return false;
-            case QUAD_U:
-                unregister_code16(LCA(KC_U));
-                return false;
-            case QUAD_I:
-                unregister_code16(LCA(KC_I));
-                return false;
-            case QUAD_J:
-                unregister_code16(LCA(KC_J));
-                return false;
-            case QUAD_K:
-                unregister_code16(LCA(KC_K));
                 return false;
             case MAX:
                 unregister_code16(LCA(KC_ENT));
