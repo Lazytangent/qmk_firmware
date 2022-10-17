@@ -1,7 +1,7 @@
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = no        # Mouse keys
 EXTRAKEY_ENABLE = no        # Audio control and System control
-CONSOLE_ENABLE = no         # Console for debug
+CONSOLE_ENABLE = yes        # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
 NKRO_ENABLE = no
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
@@ -22,3 +22,4 @@ SRC +=  ./lib/rgb_state_reader.c \
         # ./lib/timelogger.c \
 
 BOOTLOADER = atmel-dfu
+LEADER_ENABLE= yes

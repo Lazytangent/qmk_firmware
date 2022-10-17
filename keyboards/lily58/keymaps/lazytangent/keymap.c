@@ -74,9 +74,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [3] = LAYOUT(
   KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD,
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-  _______, KC_GRV,  KC_TILD, _______, _______, _______,                     _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_DQUO,
-  _______, KC_F19,  _______, _______, _______, _______,  _______, _______,  _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
-                             _______, _______, _______,  _______, _______,  _______, KC_DEL,  _______
+  KC_LCTL, KC_GRV,  KC_TILD, _______, _______, _______,                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, KC_DQUO,
+  KC_LSFT, KC_F19,  _______, _______, _______, _______,  _______, _______,  _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
+                             _______, _______, _______,  KC_LEAD, _______,  _______, KC_DEL,  _______
 ),
 
 };
@@ -139,3 +139,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+LEADER_EXTERNS();
+
+void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_ONE_KEY(KC_LEFT) {
+      register_code(KC_LCTL);
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
+      unregister_code(KC_LCTL);
+    }
+    SEQ_ONE_KEY(KC_RGHT) {
+      register_code(KC_LCTL);
+      register_code(KC_RGHT);
+      unregister_code(KC_LEFT);
+      unregister_code(KC_RGHT);
+    }
+  }
+}
+
+void keyboard_post_init_user(void) {
+  debug_enable=true;
+  debug_keyboard=true;
+}

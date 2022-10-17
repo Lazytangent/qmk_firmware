@@ -44,3 +44,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_ANIMATIONS
 #define RGBLIGHT_SLEEP
 */
+
+#define LEADER_TIMEOUT 250
+#define LEADER_PER_KEY_TIMING
