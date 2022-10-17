@@ -19,8 +19,10 @@ enum custom_keycodes {
 void set_keylog(uint16_t keycode, keyrecord_t *record);
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    print("outer here");
     if (record->event.pressed) {
         #ifdef OLED_DRIVER_ENABLE
+            print("here");
             set_keylog(keycode, record);
         #endif
         // set_timelog();
