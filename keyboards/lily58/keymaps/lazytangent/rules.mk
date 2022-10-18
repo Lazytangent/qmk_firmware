@@ -23,4 +23,4 @@ SRC +=  ./lib/rgb_state_reader.c \
         # ./lib/timelogger.c \
 
 BOOTLOADER = atmel-dfu
-LEADER_ENABLE= yes
+LEADER_ENABLE = yes
