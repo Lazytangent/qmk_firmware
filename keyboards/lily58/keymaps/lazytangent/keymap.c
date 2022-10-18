@@ -1,6 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "keymap.h"
-#include "leader.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -60,6 +58,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  /*                             _______, _______, _______, _______, _______, _______, _______, _______ */
 /* ), */
 
+//SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk
+#ifdef OLED_ENABLE
+
+// When you add source files to SRC in rules.mk, you can use functions.
+const char *read_layer_state(void);
+const char *read_logo(void);
+void set_keylog(uint16_t keycode, keyrecord_t *record);
+const char *read_keylog(void);
+const char *read_keylogs(void);
+
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+  if (!is_keyboard_master())
+    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+  return rotation;
+}
+
+const char *read_leader_state(void);
+void set_leader_state(bool leader_state);
+char wpm_str[10];
+
+bool oled_task_user(void) {
+  if (is_keyboard_master()) {
+    // If you want to change the display of OLED, you need to change here
+    oled_set_cursor(0,0); {
+      oled_write_ln("lazytangent", false);
+    }
+    oled_set_cursor(0,1); {
+      oled_write_ln(read_layer_state(), false);
+    }
+    oled_set_cursor(0,2); {
+      oled_write_ln(read_keylog(), false);
+    }
+    oled_set_cursor(0,3); {
+      oled_write_ln(read_leader_state(), false);
+    }
+  } else {
+    oled_set_cursor(0,0); {
+      sprintf(wpm_str, "WPM: %03d", get_current_wpm());
+      oled_write(wpm_str, false);
+    }
+  }
+  return false;
+}
+#endif // OLED_ENABLE
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef OLED_ENABLE
@@ -74,5 +117,50 @@ void keyboard_post_init_user(void) {
   debug_enable=true;
   debug_keyboard=true;
 }
+
+LEADER_EXTERNS();
+
+void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leader_start();
+    leading = false;
+
+    SEQ_ONE_KEY(KC_LEFT) {
+      SEND_STRING(SS_LCTL(SS_TAP(X_LEFT)));
+    }
+    SEQ_ONE_KEY(KC_RGHT) {
+      SEND_STRING(SS_LCTL(SS_TAP(X_RGHT)));
+    }
+
+    SEQ_ONE_KEY(KC_H) {
+      SEND_STRING(SS_LALT("h"));
+    }
+    SEQ_ONE_KEY(KC_J) {
+      SEND_STRING(SS_LALT("j"));
+    }
+    SEQ_ONE_KEY(KC_K) {
+      SEND_STRING(SS_LALT("k"));
+    }
+    SEQ_ONE_KEY(KC_L) {
+      SEND_STRING(SS_LALT("l"));
+    }
+
+    SEQ_ONE_KEY(KC_TAB) {
+      SEND_STRING(SS_LCTL(SS_TAP(X_TAB)));
+    }
+
+    leader_end();
+  }
+}
+
+#ifdef OLED_ENABLE
+void leader_start(void) {
+  set_leader_state(true);
+}
+
+void leader_end(void) {
+  set_leader_state(false);
+}
+#endif
 
 // vim: sts=2 tw=2
