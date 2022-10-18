@@ -24,3 +24,4 @@ SRC +=  ./lib/rgb_state_reader.c \
 
 BOOTLOADER = atmel-dfu
 LEADER_ENABLE = yes
+SEND_STRING_ENABLE = yes
