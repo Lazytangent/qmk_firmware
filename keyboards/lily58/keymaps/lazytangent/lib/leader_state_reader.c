@@ -7,11 +7,9 @@ const char *read_leader_state(void) {
 }
 
 void set_leader_state(bool state) {
-  switch (state)
-  {
-  case true:
+  if (state) {
     snprintf(leader_state, sizeof(leader_state), "LEADER: ON");
-  default:
+  } else {
     snprintf(leader_state, sizeof(leader_state), "LEADER: OFF");
   }
 }
