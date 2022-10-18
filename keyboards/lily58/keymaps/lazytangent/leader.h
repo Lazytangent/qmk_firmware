@@ -6,16 +6,14 @@ void matrix_scan_user(void) {
     leading = false;
 
     SEQ_ONE_KEY(KC_LEFT) {
-      register_code(KC_LCTL);
-      register_code(KC_LEFT);
-      unregister_code(KC_LEFT);
-      unregister_code(KC_LCTL);
+      SEND_STRING(SS_LCTL(SS_TAP(X_LEFT)));
     }
     SEQ_ONE_KEY(KC_RGHT) {
-      register_code(KC_LCTL);
-      register_code(KC_RGHT);
-      unregister_code(KC_RGHT);
-      unregister_code(KC_LCTL);
+      SEND_STRING(SS_LCTL(SS_TAP(X_RGHT)));
+    }
+
+    SEQ_ONE_KEY(KC_H) {
+      SEND_STRING(SS_LALT("h"));
     }
     leader_end();
   }
