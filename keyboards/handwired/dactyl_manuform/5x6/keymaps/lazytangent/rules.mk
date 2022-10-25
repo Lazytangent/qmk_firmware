@@ -1,0 +1,5 @@
+VIA_ENABLE = no
+LTO_ENABLE = yes
+
+LEADER_ENABLE = yes
+SEND_STRING_ENABLE = yes
