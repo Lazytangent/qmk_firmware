@@ -9,7 +9,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LALT, KC_LGUI,                                                        KC_MINS, KC_EQL,
                                                      KC_LBRC, MO(2),    MO(3),   KC_RBRC,
                                                      KC_TAB,  KC_SPC,   KC_ENT,  KC_BSPC,
-                                                     KC_LGUI, KC_LALT,  KC_RALT, KC_RGUI
+                                                     KC_LALT, KC_LGUI,  KC_LCTL, KC_RGUI
     ),
 
     [1] = LAYOUT_5x6(
@@ -41,8 +41,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_GRV,  KC_TILD, KC_BSLS, KC_LPRN, KC_RPRN,                    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
         _______, _______, _______, KC_PIPE, KC_LCBR, KC_RCBR,                    _______, _______, _______, _______, _______, _______,
                           _______, _______,                                                        _______, _______,
-                                                     _______, KC_LEAD,  _______, _______,
                                                      _______, _______,  _______, _______,
+                                                     _______, KC_LEAD,  _______, _______,
                                                      _______, _______,  _______, _______
     ),
 };
@@ -73,6 +73,26 @@ void matrix_scan_user(void) {
         }
         SEQ_ONE_KEY(KC_A) {
             SEND_STRING(SS_TAP(X_F17));
+        }
+
+        SEQ_ONE_KEY(KC_LEFT) {
+            SEND_STRING(SS_LCTL(SS_TAP(X_LEFT)));
+        }
+        SEQ_ONE_KEY(KC_RGHT) {
+            SEND_STRING(SS_LCTL(SS_TAP(X_RGHT)));
+        }
+
+        SEQ_ONE_KEY(KC_H) {
+            SEND_STRING(SS_LALT("h"));
+        }
+        SEQ_ONE_KEY(KC_J) {
+            SEND_STRING(SS_LALT("j"));
+        }
+        SEQ_ONE_KEY(KC_K) {
+            SEND_STRING(SS_LALT("k"));
+        }
+        SEQ_ONE_KEY(KC_L) {
+            SEND_STRING(SS_LALT("l"));
         }
     }
 }
