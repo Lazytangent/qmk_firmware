@@ -16,20 +16,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include QMK_KEYBOARD_H
 
-#define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _NUM 3
-#define _CHEESE 4
-
-/* enum layers {                Unable to use enum for layers on cannonkeys/ortho48 because of size restrictions
-  _BASE = SAFE_RANGE,1
-  _LOWER,
-  _RAISE,
-  _NUM,
-  _CHEESE
-}; */
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
@@ -43,11 +29,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Esc  |  Alt | GUI  | Num  |Lower |Space | Bksp |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
-[_QWERTY] = LAYOUT_ortho_4x12(
+[0] = LAYOUT_ortho_4x12(
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,   KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_BSLS,
     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,  KC_G,   KC_H,    KC_J,  KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,   KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    KC_ESC,  KC_LALT, KC_LGUI, MO(3),   MO(1), KC_SPC, KC_BSPC, MO(2), KC_BSPC, KC_DEL,  KC_RALT, KC_ENT
+    KC_ESC,  KC_LALT, KC_LGUI, MO(3),   MO(1), KC_SPC, KC_BSPC, MO(2), KC_BSPC, KC_RGUI, KC_RALT, KC_ENT
 ),
 
 /* Lower
@@ -58,32 +44,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |  {   |   }  |  [   |   ]  |   <  |   >  |   ?  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |AltF4 |Gui(D)|      |             |      | Home | PgDn | PgUp | End  |
+ * |      |      |      |Gui(D)|      |             |      | Home | PgDn | PgUp | End  |
  * `-----------------------------------------------------------------------------------'
  */
-[_LOWER] = LAYOUT_ortho_4x12(
-    KC_GRV,  KC_1,    KC_2,     KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
-    KC_TAB,  KC_GRV,  KC_TILD,  _______, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, KC_BSLS, KC_PIPE,
-    _______, _______, _______,  _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_LT,   KC_GT,   KC_QUES, KC_ENT,
-    _______, _______, A(KC_F4), G(KC_D), _______, _______, _______, MO(4),   KC_DEL,  KC_PGDN, KC_PGUP, KC_END
+[1] = LAYOUT_ortho_4x12(
+    _______, KC_1,    KC_2,     KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
+    KC_TAB,  KC_GRV,  KC_TILD,  KC_BSLS, KC_LPRN, KC_RPRN, KC_UNDS, KC_MINS, KC_EQL,  KC_PLUS, KC_COLN, KC_DQUO,
+    _______, _______, _______,  KC_PIPE, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_LT,   KC_GT,   KC_QUES, _______,
+    _______, _______, _______,  G(KC_D), _______, _______, _______, MO(4),   KC_DEL,  _______, _______, _______
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bspc |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |      |      |      |      |      |      | Left | Down |  Up  | Right|      |
+ * | Del  |      |      |      |      |      | Left | Down | Up   | Right|      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      | Home | PgDn | PgUp | End  |Enter |
+ * |      |      |      |      |      |      |      | Home | PgDn | PgUp | End  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |BriDn |BriUp |Cheese|
  * `-----------------------------------------------------------------------------------'
  */
-[_RAISE] = LAYOUT_ortho_4x12(
+[2] = LAYOUT_ortho_4x12(
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
-    KC_DEL,  KC_GRV,  KC_TILD, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
-    _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_ENT,
-    _______, _______, _______, _______, MO(4),   _______, _______, _______, _______, KC_BRID, KC_BRIU, MO(_CHEESE)
+    KC_DEL,  KC_GRV,  KC_TILD, KC_BSLS, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+    _______, _______, _______, KC_PIPE, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
+    _______, _______, _______, _______, MO(4),   _______, _______, _______, _______, KC_BRID, KC_BRIU, MO(4)
 ),
 
 /* Num -- Numpad Layer
@@ -97,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |             |      |      |Dsk_Dn|Dsk_Up|      |
  * `-----------------------------------------------------------------------------------'
  */
-[_NUM] = LAYOUT_ortho_4x12(
+[3] = LAYOUT_ortho_4x12(
     _______, _______, _______, _______, _______, _______, KC_P7,   KC_P8,   KC_P9,   KC_PSLS, KC_PMNS, KC_BSPC,
     _______, _______, _______, _______, _______, _______, KC_P4,   KC_P5,   KC_P6,   KC_PAST, KC_PPLS, _______,
     _______, _______, _______, _______, _______, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, KC_PEQL, KC_PENT,
@@ -115,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
-[_CHEESE] = LAYOUT_ortho_4x12(
+[4] = LAYOUT_ortho_4x12(
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, KC_F13,  KC_F14,  KC_F15,  KC_F16,  _______,
     _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______, _______, KC_F17,  KC_F18,  KC_F19,  KC_F20,  _______,
     _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, KC_F21,  KC_F22,  KC_F23,  KC_F24,  _______,
