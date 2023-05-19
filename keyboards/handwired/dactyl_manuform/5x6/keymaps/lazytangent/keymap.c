@@ -7,7 +7,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                           KC_LALT, KC_DLR,                                                         KC_RGUI, KC_RALT,
-                                                     KC_LBRC, MO(2),    MO(3),   KC_RBRC,
+                                                     KC_LSFT, MO(2),    MO(3),   KC_RSFT,
                                                      KC_LCTL, KC_SPC,   KC_ENT,  KC_BSPC,
                                                      KC_LALT, KC_LGUI,  KC_LCTL, KC_RGUI
     ),
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, KC_PIPE, KC_LCBR, KC_RCBR,                    _______, _______, _______, _______, _______, _______,
                           _______, _______,                                                        _______, _______,
                                                      _______, MO(4),    _______, _______,
-                                                     _______, KC_LEAD,  _______, _______,
+                                                     _______, _______,  _______, _______,
                                                      _______, _______,  _______, _______
     ),
 
@@ -68,42 +68,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*                                                  _______, _______,  _______, _______, */
 /*                                                  _______, _______,  _______, _______ */
 /* ) */
-
-LEADER_EXTERNS();
-
-void matrix_scan_user(void) {
-    LEADER_DICTIONARY() {
-        leading = false;
-        leader_end();
-
-        SEQ_ONE_KEY(KC_T) {
-            SEND_STRING(SS_TAP(X_F19));
-        }
-        SEQ_ONE_KEY(KC_R) {
-            SEND_STRING(SS_TAP(X_F18));
-        }
-        SEQ_ONE_KEY(KC_A) {
-            SEND_STRING(SS_TAP(X_F17));
-        }
-
-        SEQ_ONE_KEY(KC_LEFT) {
-            SEND_STRING(SS_LCTL(SS_TAP(X_LEFT)));
-        }
-        SEQ_ONE_KEY(KC_RGHT) {
-            SEND_STRING(SS_LCTL(SS_TAP(X_RGHT)));
-        }
-
-        SEQ_ONE_KEY(KC_H) {
-            SEND_STRING(SS_LALT("h"));
-        }
-        SEQ_ONE_KEY(KC_J) {
-            SEND_STRING(SS_LALT("j"));
-        }
-        SEQ_ONE_KEY(KC_K) {
-            SEND_STRING(SS_LALT("k"));
-        }
-        SEQ_ONE_KEY(KC_L) {
-            SEND_STRING(SS_LALT("l"));
-        }
-    }
-}
