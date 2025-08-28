@@ -18,9 +18,8 @@
 #include <hal.h>
 #include "ec_matrix.h"
 
-#include QMK_KEYBOARD_H
-/* #include "quantum.h" */
-/* #include "print.h" */
+#include "quantum.h"
+#include "print.h"
 
 /* ADC */
 #define C_CHARGE_WAIT() {if (col == 0 && row == 0) {int t=10;while (t-- > 0) asm("nop");}}
@@ -118,6 +117,7 @@ static void ec_apc_init(void)
     }
     uint8_t loops = 50;//EC_INIT_CHECK_TIMES;
     while(loops--) {
+        /* uint8_t installed_keys = 0; */
         for (uint8_t col = 0; col < MATRIX_COLS; col++) {
             ec_select_col(col);
             for (uint8_t row = 0; row < MATRIX_ROWS; row++) {

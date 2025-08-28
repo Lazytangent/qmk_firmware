@@ -15,16 +15,15 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include QMK_KEYBOARD_H
-
-/* #include "hal.h" */
-/* #include "ch.h" */
-/* #include "led.h" */
-/* #include "rgblight.h" */
+#include "hal.h"
+#include "ch.h"
+#include "led.h"
+#include "rgblight.h"
 
 #include "stdint.h"
-/* #include "quantum.h" */
+#include "quantum.h"
 
+#define RGBLED_NUM RGBLIGHT_LED_COUNT
 
 static LED_TYPE INDICATOR_COLOR_LED1 = {.r = 64, .g = 0,   .b = 64 };
 static LED_TYPE RGBLIGHT_COLOR_OFF   = {.r = 0, .g = 0,   .b = 0   };
@@ -41,7 +40,6 @@ void rgblight_call_driver(LED_TYPE *start_led, uint8_t num_leds) {
         rgbled[0] = RGBLIGHT_COLOR_OFF;
     }
     memcpy(&rgbled[INDICATOR_NUM], start_led, RGBLED_NUM*3);
-    /* ws2812_setleds(rgbled, INDICATOR_NUM+RGBLED_NUM); */
 }
 
 void led_set_user(uint8_t usb_led)

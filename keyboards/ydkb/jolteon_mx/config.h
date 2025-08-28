@@ -7,15 +7,6 @@
 #define CONTACT(x,y)    x##y
 #define CONTACT2(x,y)   CONTACT(x,y)
 #define FW_VER          CONTACT2(VIAL_, FW_VER_DATE)
-#define VENDOR_ID       0x5944
-#define PRODUCT_ID      0x23EF
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    "KBDFans_YDKB"
-#if CONSOLE_ENABLE
-#define PRODUCT         Jolteon Keyboard Uni Debug (FW_VER)
-#else
-#define PRODUCT         "Jolteon Keyboard Uni (FW_VER)"
-#endif
 
 #define USB_MAX_POWER_CONSUMPTION 350
 #define WAIT_FOR_USB
@@ -45,7 +36,8 @@
 #define RGBLIGHT_LIMIT_VAL 192
 #define RGBLIGHT_SLEEP
 #define WS2812_DI_PIN B15
-#define RGBLED_NUM 16
+#define RGBLIGHT_LED_COUNT 16
+// #define RGBLED_NUM 16
 /* key combination for command */
 #define IS_COMMAND() ( \
     (get_mods() == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) || \

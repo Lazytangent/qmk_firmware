@@ -1,0 +1,9 @@
+{
+    "manufacturer": "KBDFans_YDKB",
+    "keyboard_name": "Jolteon Keyboard Uni (FW_VER)",
+    "usb": {
+        "device_version": "0.0.1",
+        "pid": "0x23EF",
+        "vid": "0x5944"
+    }
+}
