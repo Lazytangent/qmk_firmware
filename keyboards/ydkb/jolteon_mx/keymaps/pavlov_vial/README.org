@@ -1,0 +1,34 @@
+#+title: Compiling for KBD Pavlov
+
+** Make
+#+begin_src shell
+qmk compile --keyboard ydkb/jolteon_mx --keymap pavlov_vial
+#+end_src
+
+** Convert BIN to UF2
+#+begin_src shell
+# From the root of the repository...
+./util/uf2conv.py -b 0x8004000 -c -f 0x9d5beef1 -o pavlov.uf2 ydkb_jolteon_mx_pavlov_vial.bin
+#+end_src
+
+*** Notes
+- The value used for =-b= matches the value of the =Target Address of the provided
+  UF2 firmware file from the KBDFans site on the Pavlov page.
+- The generated UF2 file is named =pavlov.uf2=.
+- The last argument is the input file, and that should match the file that was
+  generated from the =make= command above.
+
+Here's the =i= / =--info= output for the provided firmware from KBDFans:
+#+begin_example
+% ./util/uf2conv.py -i pavlov-old.uf2
+--- UF2 File Header Info ---
+Family ID is , hex value is 0x9d5beef1
+Target Address is 0x08004000
+All block flag values consistent, 0x2000
+----------------------------
+#+end_example
+
+** Flash
+#+begin_src shell
+./util/uf2conv.py -D pavlov.uf2
+#+end_src
