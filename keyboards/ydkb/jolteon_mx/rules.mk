@@ -21,11 +21,12 @@ CONSOLE_ENABLE = no        # Console for debug
 COMMAND_ENABLE = yes        # Commands for debug and configuration
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no      # Enable keyboard backlight functionality
-# RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
+RGBLIGHT_ENABLE = no       # Enable keyboard RGB underglow
+# RGB_MATRIX_DRIVER = ws2812
 AUDIO_ENABLE = no           # Audio output
 SLEEP_LED_ENABLE = no
 
-
+# WS2812_DRIVER_REQUIRED = yes
 
 
 # Enter lower-power sleep mode when on the ChibiOS idle thread

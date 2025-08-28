@@ -18,8 +18,9 @@
 #include <hal.h>
 #include "ec_matrix.h"
 
-#include "quantum.h"
-#include "print.h"
+#include QMK_KEYBOARD_H
+/* #include "quantum.h" */
+/* #include "print.h" */
 
 /* ADC */
 #define C_CHARGE_WAIT() {if (col == 0 && row == 0) {int t=10;while (t-- > 0) asm("nop");}}

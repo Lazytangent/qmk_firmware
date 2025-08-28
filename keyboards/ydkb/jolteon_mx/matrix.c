@@ -16,23 +16,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /* rough code */
-
-#include "ch.h"
-#include "hal.h"
+#include QMK_KEYBOARD_H
 
 /*
  * scan matrix
  */
-#include "action.h"
-#include "print.h"
-#include "debug.h"
-#include "timer.h"
-#include "util.h"
-#include "matrix.h"
 #include "debounce_pk.h"
-#include "wait.h"
 #include "ec_matrix.h"
-/* #include "rgblight.h" */
 
 
 
