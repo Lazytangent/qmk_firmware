@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "led.h"
 #include "rgblight.h"
 
+#include "print.h"
 #include "stdint.h"
 #include "quantum.h"
 
@@ -50,49 +51,4 @@ void led_set_user(uint8_t usb_led)
         indicator_state = 0;
     }
     rgblight_set();
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    static uint8_t mod_keys_registered;
-    uint8_t pressed_mods = get_mods();
-    switch (keycode) {
-        case 0x5c00: // via/vial reset to bootloader
-            if (record->event.pressed) {
-                clear_keyboard();
-                volatile uint32_t *uf2bl_backup_reg = (uint32_t*)0x20004000;
-                *uf2bl_backup_reg = 0x9d5bfc2bUL;
-                NVIC_SystemReset();
-            }
-            return false;
-        // 0x5f8f for Alt+Esc=f4 and RShift+Esc=~
-        case 0x5F8F:
-            if (record->event.pressed) {
-                if ((pressed_mods & MOD_BIT(KC_RSFT)) && (~pressed_mods & MOD_BIT(KC_LCTL))) {
-                    mod_keys_registered = KC_GRV;
-                } else if (pressed_mods & MOD_BIT(KC_LALT)) {
-                    mod_keys_registered = KC_F4;
-                } else {
-                    mod_keys_registered = KC_ESC;
-                }
-                register_code(mod_keys_registered);
-                send_keyboard_report();
-            } else {
-                unregister_code(mod_keys_registered);
-                send_keyboard_report();
-            }
-            return false;
-        default:
-            return true; // Process all other keycodes normally
-    }
-}
-
-void enter_bootloader(void) {
-    clear_keyboard();
-    volatile uint32_t *uf2bl_backup_reg = (uint32_t*)0x20004000;
-    *uf2bl_backup_reg = 0x9d5bfc2bUL;
-    NVIC_SystemReset();
-}
-
-void restart_usb_driver(USBDriver *usbp) {
-    NVIC_SystemReset();
 }
