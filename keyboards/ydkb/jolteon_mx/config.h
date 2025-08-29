@@ -8,7 +8,6 @@
 #define CONTACT2(x,y)   CONTACT(x,y)
 #define FW_VER          CONTACT2(VIAL_, FW_VER_DATE)
 
-#define USB_MAX_POWER_CONSUMPTION 350
 #define WAIT_FOR_USB
 
 #define EC_INIT_CHECK_TIMES 0
@@ -33,10 +32,7 @@
 #define RGBLIGHT_EFFECT_ALTERNATING
 #define RGBLIGHT_EFFECT_TWINKLE
 
-#define RGBLIGHT_LIMIT_VAL 192
 #define RGBLIGHT_SLEEP
-#define WS2812_DI_PIN B15
-#define RGBLIGHT_LED_COUNT 16
 // #define RGBLED_NUM 16
 /* key combination for command */
 #define IS_COMMAND() ( \

@@ -1,9 +1,26 @@
 {
     "manufacturer": "KBDFans_YDKB",
     "keyboard_name": "Jolteon Keyboard Uni (FW_VER)",
+    "board": "MAPLEMINI_STM32_F103",
+    "bootloader": "custom",
+    "bootmagic": {
+        "enabled": false
+    },
+    "mouse_key": {
+        "enabled": true
+    },
+    "processor": "STM32F103",
+    "rgblight": {
+        "led_count": 16,
+        "max_brightness": 192
+    },
     "usb": {
         "device_version": "0.0.1",
+        "max_power": 350,
         "pid": "0x23EF",
         "vid": "0x5944"
+    },
+    "ws2812": {
+        "pin": "B15"
     }
 }

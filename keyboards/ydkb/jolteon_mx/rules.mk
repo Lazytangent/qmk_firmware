@@ -2,20 +2,15 @@
 SRC ?=	matrix.c ec_matrix.c led.c
 
 # MCU name
-MCU = STM32F103
-BOARD = MAPLEMINI_STM32_F103
 
 # Bootloader selection
 MCU_LDSCRIPT = STM32F103CBT6_uf2_bootloader
-BOOTLOADER = custom
 
 # Build Options
 #   change yes to no to disable
 #
 CUSTOM_MATRIX           = yes # Custom matrix file
 UNICODE_ENABLE          = yes # Unicode
-BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
-MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no        # Console for debug
 COMMAND_ENABLE = yes        # Commands for debug and configuration
