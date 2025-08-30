@@ -12,7 +12,6 @@ MCU_LDSCRIPT = STM32F103CBT6_uf2_bootloader
 CUSTOM_MATRIX           = yes # Custom matrix file
 UNICODE_ENABLE          = yes # Unicode
 EXTRAKEY_ENABLE = yes       # Audio control and System control
-CONSOLE_ENABLE = no        # Console for debug
 COMMAND_ENABLE = yes        # Commands for debug and configuration
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no      # Enable keyboard backlight functionality
