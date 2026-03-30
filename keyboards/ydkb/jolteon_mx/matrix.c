@@ -24,7 +24,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "debounce_pk.h"
 #include "ec_matrix.h"
 
-
+#define LAYOUT( \
+    k00 \
+) { \
+    { k00 } \
+}
 
 /* matrix state(1:on, 0:off) */
 static matrix_row_t matrix[MATRIX_ROWS] = {0};
